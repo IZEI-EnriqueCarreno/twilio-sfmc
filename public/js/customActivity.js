@@ -24,6 +24,7 @@ define([
     //connection.on('gotoStep', onGotoStep);
 
     function onRender() {
+        console.log('customActivity.js: onRender called🫡');
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
         connection.trigger('requestTokens');
@@ -31,7 +32,7 @@ define([
     }
 
   function initialize(data) {
-        console.log("Initializing data data: "+ JSON.stringify(data));
+        console.log("Initializing data data👾: "+ JSON.stringify(data));
         if (data) {
             payload = data;
         }    
@@ -44,12 +45,12 @@ define([
          );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-        console.log('Has In arguments: '+JSON.stringify(inArguments));
+        console.log('customActivity.js: hasInArguments👾:', hasInArguments);
+        console.log('customActivity.js: inArguments:👾', JSON.stringify(inArguments));
 
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
-
+                console.log('customActivity.js: inArgument key👾:', key, 'value:', val);
                 if (key === 'accountSid') {
                     $('#accountSID').val(val);
                 }
@@ -79,13 +80,13 @@ define([
 
     function onGetTokens (tokens) {
         // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
-        console.log("Tokens function: "+JSON.stringify(tokens));
+        console.log("Tokens function🗝️: "+JSON.stringify(tokens));
         //authTokens = tokens;
     }
 
     function onGetEndpoints (endpoints) {
         // Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
-        console.log("Get End Points function: "+JSON.stringify(endpoints));
+        console.log("Get End Points function🐣: "+JSON.stringify(endpoints));
     }
 
     function save() {
@@ -105,7 +106,7 @@ define([
 
         payload['metaData'].isConfigured = true;
 
-        console.log("Payload on SAVE function: "+JSON.stringify(payload));
+        console.log("Payload on SAVE function😲: "+JSON.stringify(payload));
         connection.trigger('updateActivity', payload);
 
     }                    
