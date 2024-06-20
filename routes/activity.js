@@ -100,9 +100,13 @@ exports.execute = function (req, res) {
     const accountSid = requestBody.accountSid;
     const authToken = requestBody.authToken;
     const to = requestBody.to;
-    const from = requestBody.inArguments[0].messagingService;
+    const from = requestBody.messagingService;
     const body = requestBody.body;;
-
+    console.log("accountSid:", accountSid);
+    console.log("authToken:", authToken);
+    console.log("to:", to);
+    console.log("messagingService:", messagingService);
+    console.log("body:", body);
     const client = require('twilio')(accountSid, authToken); 
      
     client.messages 
