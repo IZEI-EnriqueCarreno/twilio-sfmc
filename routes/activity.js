@@ -21,7 +21,7 @@ function logData(req) {
         cookies: req.cookies,
         ip: req.ip,
         path: req.path, 
-        host: req.host,
+        host: req.hostname,
         fresh: req.fresh,
         stale: req.stale,
         protocol: req.protocol,
@@ -39,7 +39,7 @@ function logData(req) {
     console.log("cookies: " + req.cookies);
     console.log("ip: " + req.ip);
     console.log("path: " + req.path);
-    console.log("host: " + req.host);
+    console.log("host: " + req.hostname);
     console.log("fresh: " + req.fresh);
     console.log("stale: " + req.stale);
     console.log("protocol: " + req.protocol);
@@ -62,7 +62,7 @@ exports.edit = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Edit');
+    res.status(200).send('Edit');
 };
 
 /*
@@ -80,7 +80,7 @@ exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
     logData(req);
-    res.send(200, 'Save');
+    res.status(200).send('Save');
 };
 
 /*
@@ -122,7 +122,7 @@ exports.execute = function (req, res) {
 
     // FOR TESTING
     logData(req);
-    res.send(200, 'Publish');
+    res.status(200).send('Publish');
 
     // Used to decode JWT
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
@@ -139,7 +139,7 @@ exports.execute = function (req, res) {
     //         var decodedArgs = decoded.inArguments[0];
             
     //         logData(req);
-    //         res.send(200, 'Execute');
+    //         res.status(200).send('Publish')(200, 'Execute');
     //     } else {
     //         console.error('inArguments invalid.');
     //         return res.status(400).end();
@@ -163,7 +163,7 @@ exports.publish = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
 //     logData(req);
-//     res.send(200, 'Publish');
+//     res.status(200).send('Publish');
 };
 
 /*
@@ -181,5 +181,5 @@ exports.validate = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
     logData(req);
-    res.send(200, 'Validate');
+    res.status(200).send('Validate');
 };
